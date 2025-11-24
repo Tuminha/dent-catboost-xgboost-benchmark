@@ -1,0 +1,16 @@
+file: "data/raw/REPLACE_ME.csv"        # path to your CSV
+target: "REPLACE_ME_TARGET"            # e.g., untreated_caries
+positive_class: 1                      # or "Yes"
+id_columns: ["id", "patient_id"]       # drop if not present
+datetime_column: ""                    # optional, for time splits
+categoricals: []                       # e.g., ["sex","region","income_bracket"]
+drop_leaky: []                         # any post-hoc cols to exclude
+test_split:                            # choose ONE approach below
+  kind: "stratified"                   # "time" or "stratified"
+  test_size: 0.2
+  time_cutoff: ""                      # e.g., "2023-01-01" if kind="time"
+scoring:
+  primary: "average_precision"         # PR-AUC
+  secondary: "roc_auc"
+class_weight: "balanced"               # or a float pos_weight
+
