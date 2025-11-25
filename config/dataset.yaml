@@ -1,16 +1,31 @@
-file: "data/raw/REPLACE_ME.csv"        # path to your CSV
-target: "REPLACE_ME_TARGET"            # e.g., untreated_caries
-positive_class: 1                      # or "Yes"
-id_columns: ["id", "patient_id"]       # drop if not present
-datetime_column: ""                    # optional, for time splits
-categoricals: []                       # e.g., ["sex","region","income_bracket"]
-drop_leaky: []                         # any post-hoc cols to exclude
-test_split:                            # choose ONE approach below
-  kind: "stratified"                   # "time" or "stratified"
+file: "data/raw/train.csv"
+test_file: "data/raw/test.csv"
+sample_submission: "data/raw/sample_submission.csv"
+
+# TODO: open train.csv and set the exact target column name
+target: "REPLACE_WITH_TARGET"        # e.g., "dental_visit_12mo"
+positive_class: 1                    # or "Yes" depending on the CSV
+
+# TODO: confirm id column name
+id_columns: ["id"]                   # adjust if different
+
+# Optional time split (likely not needed here)
+datetime_column: ""
+
+# TODO: fill after EDA (categorical columns only)
+categoricals: []                     # e.g., ["sex","region","income_bracket","education"]
+
+# Drop any post-hoc or leaky columns (rare in this comp)
+drop_leaky: []
+
+test_split:
+  kind: "stratified"
   test_size: 0.2
-  time_cutoff: ""                      # e.g., "2023-01-01" if kind="time"
+
 scoring:
-  primary: "average_precision"         # PR-AUC
+  primary: "average_precision"       # PR-AUC
   secondary: "roc_auc"
-class_weight: "balanced"               # or a float pos_weight
+
+class_weight: "balanced"             # or leave blank to disable
+
 

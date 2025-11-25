@@ -16,3 +16,22 @@ def load_dataset():
     """
     raise NotImplementedError
 
+
+def load_train_test(cfg):
+    """
+    TODO:
+    - read cfg['file'] and cfg['test_file'] with pandas
+    - drop columns in cfg['id_columns'] from X (keep separately for submission)
+    - cast columns in cfg['categoricals'] to 'category'
+    - return (X_train_full, y, X_test_full, test_ids)
+    """
+    raise NotImplementedError
+
+
+def get_sample_submission(cfg):
+    """
+    TODO: read cfg['sample_submission'] and return df
+    """
+    raise NotImplementedError
+
+

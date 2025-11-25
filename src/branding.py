@@ -32,3 +32,4 @@ def savefig_brand(path, bbox_inches="tight", dpi=160):
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     plt.savefig(path, bbox_inches=bbox_inches, dpi=dpi)
 
+
